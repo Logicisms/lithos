@@ -1,0 +1,43 @@
+//
+//  Media Elements
+//
+
+img {
+
+}
+
+svg {
+
+}
+
+audio {
+
+}
+
+video {
+
+}
+
+iframe {
+
+}
+
+
+.img,
+.image {
+    @include modifier('responsive') {
+        width:              100%;
+    }
+}
+
+.video {
+    @include modifier('responsive') {
+        @include aspect-ratio(16, 9);
+    }
+}
+
+
+
+
+
+

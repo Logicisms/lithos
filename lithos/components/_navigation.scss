@@ -1,0 +1,59 @@
+//
+//  Navigation Styles
+//
+
+.nav {
+	@include modifier(semantic) {
+		.nav-icon {
+			display:				block;
+			height:					4rem;
+			width:					4rem;
+
+			line-height:			4rem;
+			text: {
+				align:				center; }
+		}
+
+		ul,
+		ol {
+			
+		}
+
+		&:hover {
+			ul,
+			ol {
+			
+			}
+		}
+	}
+
+	@include modifier(functional) {
+		ul,
+		ol {
+			display:				none;
+		}
+
+		label {
+			padding:				2rem;
+		}
+
+		input[type="checkbox"] {
+			&:checked {
+				~ ul {
+					display:				block;
+				}
+			}
+		}
+	}
+}
+
+.site-nav {
+	float:					right;
+}
+
+
+
+
+
+
+

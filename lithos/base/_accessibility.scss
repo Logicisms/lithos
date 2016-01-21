@@ -1,0 +1,28 @@
+//
+//  Accessibility Settings
+//
+
+.screenreader,
+.sr {
+	@include element(image-description) {
+		@include null(visual);
+
+
+		&::before {
+			content: "In this image,"; }
+	}
+	
+	@include element(video-description) {
+		@include null(visual);
+
+
+		&::before {
+			content: "In this video,"; }
+	}
+}
+
+
+
+
+
+

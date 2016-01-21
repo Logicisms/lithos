@@ -1,0 +1,16 @@
+//
+//  Easter Eggs
+//
+
+//  @include glitch ($color, $intensity, $height, $width, $attribute-1, $attribute-2, $offset, $shadow-1, $shadow-2, $background)
+.glitch {
+	font-size:				3.5em;
+	@include glitch(palette(foreground), 21, 7, auto, attr(data-text), attr(data-text), 1px, -1px 0 red, 1px 0 blue, palette(background));
+}
+
+
+
+
+
+
+

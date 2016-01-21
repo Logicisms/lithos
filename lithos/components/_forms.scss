@@ -1,0 +1,186 @@
+//
+//  Input Styles
+//
+
+form {
+	margin-bottom:			$gutter;
+}
+
+legend {
+    margin: {
+        bottom:             1.45rem; }
+    
+	font-size:				1.625em;
+}
+
+
+$input-size:                2.6em;
+
+input {
+	margin: {
+		bottom:				$gutter; }
+	
+	
+	&[type="radio"],
+	&[type="checkbox"],
+	&[type="file"] {
+		&:focus {
+            
+        }
+    }
+    
+
+	&[type="text"],
+	&[type="search"],
+	&[type="email"],
+    &[type="password"]
+	&[type="url"],
+	&[type="tel"],
+	&[type="number"],
+	&[type="range"],
+	&[type="date"],
+	&[type="month"],
+	&[type="week"],
+	&[type="time"],
+	&[type="datetime"],
+	&[type="datetime-local"] {
+        height:					$input-size;
+		padding: {
+			right:				1.5ex;
+			left:				1.5ex; }
+		
+		background:				palette(background, dark);
+
+		color:					palette(foreground);
+
+
+		&:hover,
+		&:focus {
+			background:				palette(background, light);
+        }
+        
+        
+        @include child-of('.input-row') {
+            display:                table-cell;
+        }
+    }
+
+
+	@include transition(color, background-color);
+}
+
+select {
+	
+}
+
+output {
+	padding: {
+		top:				1.5ex; }
+}
+
+textarea {
+	margin: {
+		bottom:				$gutter; }
+	padding: {
+		top:				1ex;
+		right:				1.5ex;
+		bottom:				1ex;
+		left:				1.5ex; }
+	resize:					vertical;
+
+	background:				darken(palette(background), 5%);
+
+	@include transition(background-color);
+
+	&:hover,
+	&:focus {
+		background:				lighten(palette(background), 100%); }
+}
+
+button  {
+	color:					palette(foreground);
+}
+
+
+//  addons
+//  @TODO:  look into using the addon methind used in bootstrap.
+//  table-cell display, i believe.
+
+%input-addon {
+//    position:               absolute;
+//    top:                    0;
+    display:                table-cell;
+    
+    vertical-align:         middle;
+
+    @include                material-icon($input-size) {
+        line-height:            $input-size;
+        text-align:             center;
+
+        pointer-events:         none;
+    }
+    
+    
+    @include qualify('button') {
+        pointer-events:         auto;
+    }
+}
+
+.input {
+    &-addon {
+        @extend                 %input-addon;
+
+
+        @include adjacent-sibling-of('.addon-right') {
+            right:                  0;
+        }
+
+        @include adjacent-sibling-of('.addon-left') {
+            left:                   0;
+        }
+
+
+        @include modifier('padded') {
+            @extend                 %input-addon;
+
+
+            @include adjacent-sibling-of('.addon-right') {
+                right:                  ($gutter / 2);
+            }
+
+            @include adjacent-sibling-of('.addon-left') {
+                left:                   ($gutter / 2);
+            }
+        }
+    }
+    
+    &-row {
+        display:                table;
+        position:               relative;
+        
+        border: {
+            collapse:           separate; }
+    }
+}
+
+input,
+select,
+button {
+    &.addon {
+        &-right {
+            padding: {
+                right:				$input-size; }
+        }
+
+        &-left {
+            padding: {
+                left:				$input-size; }
+        }
+    }
+}
+
+
+
+
+
+

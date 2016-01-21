@@ -1,0 +1,33 @@
+//
+//  Font Icons
+//
+
+.material-icon,
+.mi {
+//  @include respond-to(print) {
+//      width:                  2em;
+//      visibility:             hidden;
+//  	
+//      font-family:            sans-serif;
+//
+//
+//  	&::before {
+//          float:                 left;
+//          width:                 1.4em;
+//          visibility:            visible;
+//
+//          content:               "\005b icon \005d"
+//  	}
+//  }
+}
+
+
+[data-icon] {
+    @extend                 .material-icon;
+}
+
+
+
+
+
+

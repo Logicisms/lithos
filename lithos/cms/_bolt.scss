@@ -1,0 +1,379 @@
+//
+//  Bolt Specific Styles
+//
+
+.site {
+	//  scope for primary site elements
+	&-header {
+		@include element(title) {
+			
+		}
+	}
+	
+	
+	&-footer {
+		
+	}
+}
+
+
+.blog {
+    @include element('main') {
+        
+    }
+    
+    
+    @include element('aside') {
+        @include element('search') {
+            input {
+                margin: {
+                    bottom:                 0; }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+//
+//  Content Types
+//
+
+$content-type-prefix:		null; // bolt-;
+//  this variable should correspond with prefixcontenttype in this theme's config.yml
+
+%contenttype {
+    &_content {
+        margin: {
+            bottom:             $gutter; }
+    }
+    
+    &_header {
+        margin: {
+            bottom:             $gutter; }
+    }
+    
+    &_media {
+        margin: {
+            bottom:             $gutter; }
+    }
+    
+    &_body {
+        margin: {
+            bottom:             $gutter; }
+    }
+    
+    &_footer {
+        
+    }
+}
+
+
+.#{$content-type-prefix}index {
+    @include element('content') {
+        @extend %contenttype_content !optional;
+    }
+    
+    
+    @include element('record') {
+        @include element('header') {
+//            @extend %contenttype_header !optional;
+        }
+        
+        
+        @include element('media') {
+            @extend %contenttype_media !optional;
+        }
+        
+        
+        @include element('excerpt') {
+            
+        }
+    }
+}
+
+.#{$content-type-prefix}entry {
+    @include element('content') {
+        @extend %contenttype_content !optional;
+    }
+    
+    
+    @include element('header') {
+        @extend %contenttype_header !optional;
+    }
+    
+    
+    @include element('media') {
+        @extend %contenttype_media !optional;
+    }
+    
+    
+    @include element('body') {
+        @extend %contenttype_body !optional;
+    }
+    
+    
+    @include element('footer') {
+
+    }
+}
+
+.#{$content-type-prefix}page {
+    @include element('content') {
+        @extend %contenttype_content !optional;
+    }
+
+
+    @include element('header') {
+        @extend %contenttype_header !optional;
+    }
+
+
+    @include element('media') {
+        @extend %contenttype_media !optional;
+    }
+
+
+    @include element('body') {
+//        @extend %contenttype_body !optional;
+    }
+
+
+    @include element('footer') {
+
+    }
+}
+
+
+.record {
+    @include element('title') {
+        
+    }
+    
+    
+    @include element('meta') {
+
+    }
+    
+    
+    @include element('edit') {
+        
+    }
+    
+    
+    @include element('metadata') {
+        > li {
+            display:                block;
+        }
+        
+        
+        @include respond-to(medium/large) {
+            > li {
+                display:                inline-block;
+            }
+        }
+    }
+    
+        @include element('byline') {
+
+        }
+
+        @include element('date') {
+            @include modifier('published') {
+                @include respond-to(medium/large) {
+                    &::before {
+                        content:                "|";
+                    }
+                }
+            }
+
+            @include modifier('changed') {
+                display:                block !important;
+            }
+
+            @include modifier('depublished') {
+                display:                block !important;
+            }
+        }
+    
+    
+    @include element('image') {
+        @include element('metadata') {
+            > li {
+                display:                inline-block;
+            }
+        }
+
+        @include element('author') {
+            font: {
+                style:              italic; }
+        }
+
+        @include element('source') {
+            &::before {
+                content:                "|";
+            }
+        }
+    }
+    
+    
+    @include element('video') {
+        @include element('metadata') {
+            > li {
+                display:                inline-block;
+            }
+        }
+
+        @include element('author') {
+            font: {
+                style:              italic; }
+        }
+
+        @include element('source') {
+            &::before {
+                content:                "|";
+            }
+        }
+    }
+    
+    
+    @include element('body') {
+
+    }
+    
+    
+    @include element('related') {
+
+    }
+    
+    
+    @include element('taxonomy') {
+
+    }
+    
+    
+    @include element('colophon') {
+
+    }
+    
+    
+    @include element('navigation') {
+
+    }
+    
+    @include element('comments') {
+
+    }
+}
+
+
+
+
+
+
+//
+//  Maintenance Mode
+//
+
+.maintenance {
+    @include element('content') {
+        padding:                $gutter;
+        
+        
+        @include respond-to(medium/large) {
+            padding: {
+                right:              4em;
+                left:               4em; }
+        }
+     }
+    
+    
+    @include element('header') {
+        margin: {
+            bottom:             $gutter; }
+    }
+    
+        @include element('title') {
+            position:               relative;
+            
+            @include transition(font-size);
+            
+            
+            &::before {
+                @include                material-icon;
+                
+                position:               absolute;
+                    top:                0;
+                    left:               -0.6em;
+                
+                color:                  rgba(palette(primary), 0.4);
+                font: {
+                    size:               2em; }
+                
+                content:                "warning";
+            }
+            
+            
+            @include respond-to(small) {
+                font: {
+                    size:               2.4rem; }
+            }
+        }
+    
+    
+    @include element('body') {
+        display:                block;
+    }
+    
+    
+    @include element('footer') {
+        
+    }
+}
+
+
+.http-response {
+    @include element('header') {
+        
+    }
+
+        @include element('title') {
+            position:               relative;
+            z-index:                z(default);
+            
+            font: {
+                size:               3em; }
+
+
+            &::before {
+                
+            }
+
+
+            @include respond-to(small) {
+//                font: {
+//                    size:               2.4rem; }
+            }
+        }
+    
+    
+    @include element('body') {
+        display:                block;
+    }
+    
+    
+    @include element('footer') {
+        
+    }
+}
+
+@include starfield(260);
+
+
+
+
+
+
