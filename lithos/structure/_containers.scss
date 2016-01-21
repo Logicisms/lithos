@@ -1,0 +1,36 @@
+//
+//  Container Elements
+//
+
+.blog {
+    @include element(main) {
+		//  the primary content area in a site built on a blogging CMS
+		width:					100%;
+
+
+		@include respond-to(medium) {
+			width:					(100% / 3) * 2; }
+		
+		@include respond-to(large) {
+			width:					(100% / 4) * 3; }
+	}
+
+    @include element(aside) {
+		//  the sidebar content area in a site built on a blogging CMS
+		//  recommended assigned element is <aside>
+		width:					100%;
+
+
+		@include respond-to(medium) {
+			width:					(100% / 3) * 1; }
+		
+		@include respond-to(large) {
+			width:					(100% / 4) * 1; }
+	}
+}
+
+
+
+
+
+

@@ -1,0 +1,240 @@
+//
+//  Typography
+//
+
+a {
+	&:link,
+    &[data-toggle="modal"] {
+        //  the [data-toggle] attribute selector here ensures that modal
+        //  anchors inherit the proper styles, despite their not linking
+        //  to a url.
+        border-bottom: {
+            width:              1px;
+            style:              dotted;
+            color:              palette(action); }
+
+        color:					palette(action);
+        text-decoration:		none;
+	}
+
+	&:visited {
+        border: {
+            color:              palette(action, visited); }
+        
+        color:					palette(action, visited);
+    }
+
+	&:focus,
+	&:hover {
+        border: {
+            color:              palette(action, focus); }
+        
+        color:					palette(action, focus);
+    }
+    
+    &:active {
+        border: {
+            color:              palette(action, active); }
+
+        color:					palette(action, active);
+    }
+
+
+	@include respond-to(large) {
+		@include transition(color);
+    }
+
+	@include respond-to(print) {
+		border: {
+			color:				palette(action, print); }
+
+        color:					palette(action, print);
+    }
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6,
+legend {
+	line-height:			1.75;
+}
+
+h1, .h1 {
+    font: {
+        size:               2.25em; }
+}
+h2, .h2 {
+    font: {
+        size:               1.875em; }
+}
+h3, .h3 {
+    font: {
+        size:               1.625em; }
+}
+h4, .h4 {
+    font: {
+        size:               1.25em; }
+}
+h5, .h5 {
+    font: {
+        size:               1em; }
+}
+h6, .h6 {
+    font: {
+        size:               0.625em; }
+}
+
+p {
+	&.lede {
+		font-size:				124%; }
+}
+
+blockquote {
+	padding:				1.5rem 5rem;
+
+
+	&:before {
+		//  establishing and positioning the decorative character that precedes all blockquotes
+		position:				absolute;
+		top:					-0.25rem;
+		left:					-0.25rem;
+
+		color:					scale-color(palette(foreground), $alpha: -75%);
+		content:				"\201c";
+		font-family:			Helvetica, sans-serif;
+		font-size:				8em;
+		line-height:			1; }
+
+
+	&.reversed {
+		text-align:				right;
+
+
+		&:before {
+			top:					auto;
+			right:					-0.25rem;
+			bottom:					-8.86rem;
+			left:					auto;
+
+			content:				"\201d";
+			font-family:			Helvetica, sans-serif;
+			font-size:				8em;
+			line-height:			1; }
+
+
+		@include respond-to(small) {
+			padding:				1.5rem 5rem 1.5rem 0rem; } }
+
+
+	> footer {
+		margin: {
+            top:                ($gutter/2); }
+
+		color:					lighten(palette(foreground), 42%);
+		font-size:				.86em;
+
+
+		&::before {
+			content:				"\2014"; } }
+
+
+	@include respond-to(small) {
+		padding:				1.5rem 0rem 1.5rem 5rem; }
+}
+
+code, .code {
+	background:				palette(background, dark);
+	border: {
+        width:              1px;
+        style:              solid;
+        color:              rgba(palette(foreground), 0.6); }
+}
+
+.code {
+	&-bloc,
+	&-block {
+		margin: {
+			bottom:				$gutter; }
+		padding:				1ex; }
+	
+	&-inline {
+		margin:					-0.2ex;
+		padding: {
+			right:				0.2ex;
+			left:				0.2ex; }
+
+		font-size:				0.94em; }
+}
+
+pre {
+	
+}
+
+abbr[title] {
+	border-bottom:			1px dotted;
+}
+
+mark, .mark,
+ins, .ins {
+	background:				palette(type, highlight);
+
+	color:					palette(foreground);
+}
+
+::selection {
+	//  	background:				$highlight;
+}
+::-moz-selection {
+	//  	background:				$highlight;
+}
+
+.label {
+	display:				inline-block;
+	margin:					.4ex 0;
+    padding:				.8ex 1ex;
+
+    background:				palette(label);
+
+    color:                  $black;
+	font-size:				.84em;
+	font-weight:			bold;
+
+
+	@include modifier('success') {
+        @extend					.label;
+        
+        background:				palette(label, success);
+    }
+
+	@include modifier('warning') {
+        @extend					.label;
+        
+        background:				palette(label, warning);
+    }
+
+	@include modifier('alert') {
+        @extend					.label;
+        
+        background:				palette(label, alert);
+
+		color:					$white;
+    }
+}
+
+.typo {
+	text-decoration: {
+        color:				palette(label, alert);
+		line:				underline;
+		skip:				ink spaces;
+		style:				wavy; }
+}
+
+
+
+
+
+
+

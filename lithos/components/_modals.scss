@@ -1,0 +1,443 @@
+//
+//  Modal Styles
+//
+//  petra's default styles deliver a plain, barely formatted modal
+
+.modal {
+	&-backdrop {
+		&.fade {
+			background:				rgba($black, 0); }
+
+		&.in {
+			background:				rgba($black, 0.8); } }
+	
+	
+	&.fade &-dialog {
+		opacity:				0;
+	
+		@include transition(opacity); }
+
+	&.in &-dialog {
+		opacity:				1; }
+	
+
+	@include element(close) {
+        @include modifier(icon) {
+            position:				absolute;
+        }
+    }
+
+	&-dialog {
+		//  add a custom class to this element to build a custom modal
+
+		@include modifier('twitter') {
+			//  this is a rebuilt version of bootstrap's default modal - the structure is good to reuse
+			@extend					.modal-dialog;
+			
+			$width:					$grid-master-fixed;
+
+			max-width:				$width * 0.75;
+			margin:					0 auto;
+			padding:				1.5rem;
+
+
+			.modal {
+                &-content {
+                    background:				palette(background);
+                    border: {
+                        width:				1px;
+                        style:				solid;
+                        color:				rgba($black, 0.1); }
+                    border-radius:			.5rem;
+                }
+                
+                
+                @include element('header') {
+                    padding:				1.5rem;
+
+                    border-bottom: {
+                        width:				1px;
+                        style:				solid;
+                        color:				rgba($black, 0.1); }
+                }
+                
+                @include element('close') {
+                    @include modifier('icon') {
+                        top:					0.5rem;
+                        right:					0.5rem;
+                        padding:				0.5rem;
+
+                        color:					palette(action);
+                        font-size:				1.6rem;
+
+
+                        &:hover {
+                            color:					palette(action, focus);
+                        }
+                    }
+                }
+                
+                @include element('body') {
+                    padding:				1.5rem;
+                }
+                
+                @include element('footer') {
+                    padding:				1.5rem;
+
+                    border-top: {
+                        width:				1px;
+                        style:				solid;
+                        color:				rgba($black, 0.1); }
+
+                    text-align:				right;
+                }
+            }
+		}
+		
+
+		@include modifier('material') {
+			//  modal based on a material design theme
+			//  better with user modifications than out of the box
+			//  apply custom material schema easily to this modal
+			@extend					.modal-dialog;
+			
+			$width:					$grid-master-fixed;
+			$padding:				($gutter/2);
+
+			max-width:				($width/6) * 5;
+			margin:					0 auto;
+			padding:				$padding;
+
+
+			.modal {
+                &-content {
+                    background:				palette(background);
+
+                    @include material-shadow(filter, high);
+                }
+                
+                
+                @include element('header') {
+                    padding: {
+                        top:				$padding;
+                        right:				$padding;
+                        bottom:				$padding;
+                        left:				$padding; }
+
+                    background: {
+                        color:				palette(primary); } // replace with your material primary color
+                    border-bottom: {
+                        width:				1px;
+                        style:				solid;
+                        color:				palette(primary, dark); }
+                }
+                
+                @include element('title') {
+                    color:                  $white;
+                }
+                
+                @include element('close') {
+                    @include modifier('icon') {
+                        display:				block;
+                        padding: {
+                            top:				$padding * 0.5;
+                            right:				$padding * 0.5;
+                            bottom:				$padding * 0.3;
+                            left:				$padding * 0.5; }
+                        right:					$padding;
+                        bottom:					-$padding*1.6;
+
+                        background: {
+                            color:				palette(action, light); }
+                        border: {
+                            radius:				100%; }
+
+                        color:					palette(background);
+                        font-size:				3rem;
+                        vertical-align:			middle;
+
+                        @include material-shadow(filter, low);
+                        @include transition(color, background-color);
+
+
+                        &:hover {
+                            background: {
+                                color:					palette(action, focus); }
+                        }
+                    }
+                }
+                
+                @include element('body') {
+                    padding:				1.5rem;
+                }
+                
+                @include element('footer') {
+                    padding:				1.5rem;
+
+                    border-top: {
+                        width:				1px;
+                        style:				solid;
+                        color:				rgba($black, 0.1); }
+
+                    text-align:				right;
+                }
+            }
+            
+            @include respond-to(medium/large) {
+				padding:				$padding * 2;
+				
+				
+				.modal {
+                    @include element('close') {
+					   @include transition(background-color);
+                    }
+				}
+			}
+		}
+		
+
+		@include modifier('college-rule') {
+			$background:			transparent; // paper background
+			$margin:				6rem; // left margin
+			$padding:				1.4rem; // general padding
+			$width:					$grid-master-fixed;
+			$border:				desaturate(palette(action), 46%); // border color
+			$line-color:			#959eb7; // paper line color
+			$line-height:			1.6em; 
+
+			//  making use of one of the css3 backgrounds from the easter egg fragment, this modal is designed to emulate the look of lined paper
+			@extend					.modal-dialog;
+
+			max-width:				$width * 0.84;
+			margin:					0 auto;
+			padding:				$padding;
+            
+            font: {
+                family:             "Indie Flower", inherit; }
+
+			@include material-shadow(filter, high);
+            
+            
+            a {
+                color:                  $border;
+            }
+
+
+			.modal {
+                &-content {
+                    background:				white;
+                }
+                
+                
+                @include element('header') {
+                    padding: {
+                        top:				$padding * 4;
+                        right:				$padding;
+                        bottom:				$padding / 2;
+                        left:				$margin * 1.2; }
+
+                    @include bg-lined-paper (
+                        $background,		// background color
+                        $margin,			// left margin size
+                        $border,			// left margin color
+                        $background,		// line border color
+                        $line-height		// line height
+                        );
+
+
+                    @include respond-to(medium/large) {
+                        @include bg-lined-paper (
+                            $background,
+                            $margin * 1.66,
+                            $border,
+                            $background,
+                            $line-height
+                            );
+
+                        padding: {
+                            left:				$margin * 1.86; }
+                    }
+                }
+                
+                @include element('close') {
+                    @include modifier('icon') {
+                        @include                null;
+                    }
+                }
+                
+                @include element('body') {
+                    @include bg-lined-paper (
+                        $background,
+                        $margin,
+                        $border,
+                        rgba($line-color, 0.36),
+                        $line-height
+                        );
+
+                    padding: {
+                        right:				$padding;
+                        bottom:				$margin/2;
+                        left:				$margin * 1.2; }
+
+                    line-height:			$line-height;
+
+
+                    p {
+                        margin: {
+                            bottom:				$line-height; }
+
+
+                        &:last-of-type {
+                            margin-bottom:			0;
+                        }
+                    }
+
+
+                    @include respond-to(medium/large) {
+                        @include bg-lined-paper (
+                            $background,
+                            $margin * 1.66,
+                            $border,
+                            rgba($line-color, 0.36),
+                            $line-height
+                            );
+
+                        padding: {
+                            left:				$margin * 1.86; }
+                    }
+                }
+                
+                @include element('footer') {
+                    @include bg-lined-paper (
+                        $background,
+                        $margin,
+                        $border,
+                        $background,
+                        $line-height
+                        );
+
+                    padding:				$padding;
+
+//  				border-top: {
+//  				width:				1px;
+//  				solid:				solid;
+//  				color:				rgba($black, 0.1); }
+
+                    text-align:				right;
+
+
+                    @include respond-to(medium/large) {
+                        @include bg-lined-paper (
+                            $background,
+                            $margin * 1.66,
+                            $border,
+                            $background,
+                            $line-height
+                            );
+
+                        padding-left:			$margin * 1.86;
+                    }
+                }
+            }
+		}
+		
+
+		@include modifier('notepad') {
+			$background:			transparent;
+			$margin:				6rem;
+			$border:				#dd4444; //rgba(palette(foreground), 0.6);
+			$line-color:			rgba(palette(foreground), 0.1);
+			$line-height:			1.6em;
+
+			//  modified version of the college-rule modal, emulates yellow notepad paper
+            @extend					.modal-dialog--college-rule;
+
+
+            a {
+                color:                  $border;
+            }
+            
+
+			.modal {
+                &-content {
+                    background:				#fff1a8;
+                }
+                
+                
+                @include element('header') {
+                    @include bg-lined-paper (
+                        $background,		// background color
+                        $margin,			// left margin size
+                        $border,			// left margin color
+                        $background,		// line border color
+                        $line-height		// line height
+                        );
+
+                    @include respond-to(medium/large) {
+                        @include bg-lined-paper (
+                            $background,
+                            $margin * 1.66,
+                            $border,
+                            $background,
+                            $line-height
+                            );
+                    }
+                }
+                
+                @include element('body') {
+                    @include bg-lined-paper (
+                        $background,
+                        $margin,
+                        $border,
+                        $line-color,
+                        $line-height
+                        );
+
+                    @include respond-to(medium/large) {
+                        @include bg-lined-paper (
+                            $background,
+                            $margin * 1.66,
+                            $border,
+                            $line-color,
+                            $line-height
+                            );
+                    }
+                }
+                
+                @include element('footer') {
+                    @include bg-lined-paper (
+                        $background,
+                        $margin,
+                        $border,
+                        $background,
+                        $line-height
+                        );
+
+                    
+                    button {
+                        color:				$border;
+                    }
+
+                    
+                    @include respond-to(medium/large) {
+                        @include bg-lined-paper (
+                            $background,
+                            $margin * 1.66,
+                            $border,
+                            $background,
+                            $line-height
+                            );
+                    }
+                }
+            }
+		}
+
+	}
+}
+
+
+
+
+
+
+

@@ -1,0 +1,138 @@
+//
+//  Table Styles
+//
+
+.tablecloth {
+	margin: {
+		bottom:				$gutter; }
+}
+
+.table {
+    $padding-x:                 0.8rem;
+    $padding-y:                 0.2rem;
+    
+	thead {
+		background: {
+			color:				palette(background, dark); }
+	}
+
+	tfoot {
+		background: {
+			color:				palette(background, dark); }
+	}
+
+	th {
+		padding: {
+            top:                $padding-y;
+            right:              $padding-x;
+            bottom:             $padding-y;
+            left:               $padding-x; }
+	}
+	td {
+        padding: {
+            top:                $padding-y;
+            right:              $padding-x;
+            bottom:             $padding-y;
+            left:               $padding-x; }
+	}
+
+
+	@include modifier('plain') {
+		th,
+		td {
+			padding: {
+                top:                $padding-y;
+                bottom:             $padding-y; }
+
+			border:					none;
+		}
+	}
+
+	@include modifier('bordered') {
+		th,
+		td {
+			
+		}
+		th {
+			
+		}
+	}
+
+	@include modifier('condensed') {
+		th,
+		td {
+			padding: {
+                top:                0;
+                right:              ($padding-x / 2);
+                bottom:             0;
+                left:               ($padding-x / 2); }
+		}
+	}
+
+	@include modifier('striped') {
+		tbody {
+			> tr:nth-of-type(odd) {
+				background:				palette(background);
+			}
+			> tr:nth-of-type(even) {
+				background:				palette(background, dark);
+			}
+		}
+	}
+
+	@include modifier('hover') {
+		tbody > tr:hover {
+			background:				palette(background, dark);
+		}
+    }
+
+    @include modifier('responsive') {
+        @include respond-to(small) {
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display:                block;
+            }
+
+            thead tr {
+                @include null(visual);
+            }
+
+            tr {
+                &:not(:last-of-type) {
+                    margin: {
+                        bottom:             $gutter; }
+                }
+            }
+
+            td {
+                $inserted-data-width:   40%;
+                $i:                     $inserted-data-width;
+                
+                padding: {
+                    left:               $i; }
+                position:               relative;
+
+
+                &::before {
+                    width:                  ($i * 0.9);
+                    padding: {
+                        top:                $padding-y;
+                        right:              $padding-x;
+                        bottom:             $padding-y;
+                        left:               $padding-x; }
+                    position:               absolute;
+                        top:                0;
+                        right:              0;
+                        bottom:             0;
+                        left:               0;
+
+                    content:                " "attr(data-label)": ";
+                }
+            }
+        }
+    }
+}
