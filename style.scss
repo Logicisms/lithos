@@ -19,7 +19,7 @@
 //@import                     url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
 //@import                     url(https://fonts.googleapis.com/css?family=Indie+Flower);
 
-@import                     "../petra/config";
+@import                     "config";
 
 
 
@@ -139,77 +139,93 @@ $foo:                       bar;
 
 //  material design components
 
-@mixin material-shadow($type, $height, $offset: null) {
+@mixin material-shadow($type, $height: low, $offset: null) {
 
     $low-height:                0.2rem;
     $low-blur:                  0.2rem;
-    $low-color:                 rgba(palette(primary, dark), 0.48);
+    $low-color:                 rgba(palette(foreground), 0.48);
 
     $high-height:               0.8rem;
     $high-blur:                 0.6rem;
-    $high-color:                rgba(palette(primary, dark), 0.36);
+    $high-color:                rgba(palette(foreground), 0.36);
 
     
-    @if $type == box and $height == low and $offset == null {
-        box-shadow:             0 $low-height $low-blur $low-color;
-    }
-    
-    @else if $type == box and $height == low and $offset == offset {
-        @include material-shadow(box, low);
+    @if $type == box {
         
-        transform:              translateY(-$low-height);
-    }
-
-    @else if $type == box and $height == high and $offset == null {
-        box-shadow:             0 $high-height $high-blur $high-color;
-    }
-    
-    @else if $type == box and $height == high and $offset == offset {
-        @include material-shadow(box, high);
-
-        transform:              translateY(-$high-height);
-    }
-
-
-    @else if $type == filter and $height == low and $offset == null {
-        filter:                 drop-shadow(0 $low-height $low-blur $low-color);
-    }
-    
-    @else if $type == filter and $height == low and $offset == offset {
-        @include material-shadow(filter, low);
+        @if $height == low {
+            box-shadow:             0 $low-height $low-blur $low-color;
+            
+            
+            @if $offset == offset {
+                transform:              translateY(-$low-height);
+            }
+        }
         
-        transform:              translateY(-$low-height);
-    }
-
-    @else if $type == filter and $height == high and $offset == null {
-        filter:                 drop-shadow(0 $high-height $high-blur $high-color);
-    }
-    
-    @else if $type == filter and $height == high and $offset == offset {
-        @include material-shadow(filter, high);
+        @else if $height == high {
+            box-shadow:             0 $high-height $high-blur $high-color;
+            
+            
+            @if $offset == offset {
+                transform:              translateY(-$high-height);
+            }
+        }
         
-        transform:              translateY(-$high-height);
-    }
-
-
-    @else if $type == text and $height == low and $offset == null {
-        text-shadow: 0 $low-height $low-blur $low-color;
-    }
-    
-    @else if $type == text and $height == low and $offset == offset {
-        @include material-shadow(text, low);
+        @else {
+            @include debugger(visible, "‘@include material-shadow(),’ at $height");
+        }
         
-        transform:              translateY(-$low-height);
     }
 
-    @else if $type == text and $height == high and $offset == null {
-        text-shadow: 0 $high-height $high-blur $high-color;
-    }
-    
-    @else if $type == text and $height == high and $offset == offset {
-        @include material-shadow(text, high);
+    @else if $type == filter {
         
-        transform:              translateY(-$high-height);
+        @if $height == low {
+            filter:                 drop-shadow(0 $low-height $low-blur $low-color);
+
+
+            @if $offset == offset {
+                transform:              translateY(-$low-height);
+            }
+        }
+
+        @else if $height == high {
+            filter:                 drop-shadow(0 $high-height $high-blur $high-color);
+
+
+            @if $offset == offset {
+                transform:              translateY(-$high-height);
+            }
+        }
+
+        @else {
+            @include debugger(visible, "‘@include material-shadow(),’ at $height");
+        }
+        
+    }
+
+    @else if $type == text {
+        
+        @if $height == low {
+            text-shadow:            0 $low-height $low-blur $low-color;
+
+
+            @if $offset == offset {
+                transform:              translateY(-$low-height);
+            }
+        }
+
+        @else if $height == high {
+            text-shadow:            0 $high-height $high-blur $high-color;
+
+
+            @if $offset == offset {
+                transform:              translateY(-$high-height);
+            }
+        }
+
+        @else {
+            @include debugger(visible, "‘@include material-shadow(),’ at $height");
+        }
+        
     }
 
     @else if $type == none {
@@ -218,10 +234,10 @@ $foo:                       bar;
 
         text-shadow:        none;
     }
+    
 
     @else {
-        filter:                 drop-shadow($high-height $high-height 0 rgba(palette(label, alert), 0.8));
-        @warn "#{$debug-syntax} ‘@include material-shadow()’. #{$debug-check-visible}";
+        @include debugger(visible, "‘@include material-shadow(),’ at $type");
     }
 
 }

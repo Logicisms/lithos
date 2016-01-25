@@ -35,10 +35,15 @@
 			@extend					.modal-dialog;
 			
 			$width:					$grid-master-fixed;
+            $padding:				($gutter / 2);
 
 			max-width:				$width * 0.75;
 			margin:					0 auto;
-			padding:				1.5rem;
+            padding: {
+                top:				$padding;
+                right:				$padding;
+                bottom:				$padding;
+                left:				$padding; }
 
 
 			.modal {
@@ -53,7 +58,11 @@
                 
                 
                 @include element('header') {
-                    padding:				1.5rem;
+                    padding: {
+                        top:				$padding;
+                        right:				$padding;
+                        bottom:				$padding;
+                        left:				$padding; }
 
                     border-bottom: {
                         width:				1px;
@@ -63,9 +72,9 @@
                 
                 @include element('close') {
                     @include modifier('icon') {
-                        top:					0.5rem;
-                        right:					0.5rem;
-                        padding:				0.5rem;
+                        @include                position-center($horizontal: false);
+                        
+                        right:					$gutter;
 
                         color:					palette(action);
                         font-size:				1.6rem;
@@ -78,11 +87,19 @@
                 }
                 
                 @include element('body') {
-                    padding:				1.5rem;
+                    padding: {
+                        top:				$padding;
+                        right:				$padding;
+                        bottom:				$padding;
+                        left:				$padding; }
                 }
-                
+
                 @include element('footer') {
-                    padding:				1.5rem;
+                    padding: {
+                        top:				$padding;
+                        right:				$padding;
+                        bottom:				$padding;
+                        left:				$padding; }
 
                     border-top: {
                         width:				1px;
@@ -102,7 +119,7 @@
 			@extend					.modal-dialog;
 			
 			$width:					$grid-master-fixed;
-			$padding:				($gutter/2);
+			$padding:				($gutter / 2);
 
 			max-width:				($width/6) * 5;
 			margin:					0 auto;
@@ -140,12 +157,12 @@
                     @include modifier('icon') {
                         display:				block;
                         padding: {
-                            top:				$padding * 0.5;
-                            right:				$padding * 0.5;
-                            bottom:				$padding * 0.3;
-                            left:				$padding * 0.5; }
+                            top:				($padding * 0.5);
+                            right:				($padding * 0.5);
+                            bottom:				($padding * 0.3);
+                            left:				($padding * 0.5); }
                         right:					$padding;
-                        bottom:					-$padding*1.6;
+                        bottom:					-($padding * 1.6);
 
                         background: {
                             color:				palette(action, light); }
@@ -184,7 +201,7 @@
             }
             
             @include respond-to(medium/large) {
-				padding:				$padding * 2;
+				padding:				($padding * 2);
 				
 				
 				.modal {
@@ -199,10 +216,10 @@
 		@include modifier('college-rule') {
 			$background:			transparent; // paper background
 			$margin:				6rem; // left margin
-			$padding:				1.4rem; // general padding
+			$padding:				($gutter / 2); // general padding
 			$width:					$grid-master-fixed;
-			$border:				desaturate(palette(action), 46%); // border color
-			$line-color:			#959eb7; // paper line color
+			$border:				material-color(indigo, 300); // border color
+            $line-color:			material-color(indigo, 200); // paper line color
 			$line-height:			1.6em; 
 
 			//  making use of one of the css3 backgrounds from the easter egg fragment, this modal is designed to emulate the look of lined paper
@@ -231,10 +248,10 @@
                 
                 @include element('header') {
                     padding: {
-                        top:				$padding * 4;
+                        top:				($padding * 4);
                         right:				$padding;
-                        bottom:				$padding / 2;
-                        left:				$margin * 1.2; }
+                        bottom:				($padding / 2);
+                        left:				($margin * 1.2); }
 
                     @include bg-lined-paper (
                         $background,		// background color
@@ -262,6 +279,10 @@
                 @include element('close') {
                     @include modifier('icon') {
                         @include                null;
+                    }
+                    
+                    @include modifier('button') {
+                        color:                  material-color(indigo, a400);
                     }
                 }
                 
@@ -345,7 +366,7 @@
 		@include modifier('notepad') {
 			$background:			transparent;
 			$margin:				6rem;
-			$border:				#dd4444; //rgba(palette(foreground), 0.6);
+			$border:				material-color(red, 400); //rgba(palette(foreground), 0.6);
 			$line-color:			rgba(palette(foreground), 0.1);
 			$line-height:			1.6em;
 
@@ -384,6 +405,12 @@
                     }
                 }
                 
+                @include element('close') {
+                    @include modifier('button') {
+                        color:                  $border;
+                    }
+                }
+                
                 @include element('body') {
                     @include bg-lined-paper (
                         $background,
@@ -412,11 +439,6 @@
                         $background,
                         $line-height
                         );
-
-                    
-                    button {
-                        color:				$border;
-                    }
 
                     
                     @include respond-to(medium/large) {
