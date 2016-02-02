@@ -53,15 +53,6 @@ $type-config: (
     browser-context:        16px,
 
     path:                   "../petra/fonts",
-    
-    //  valid values are: on, off
-    relative-line-height:   on,
-    //  if on, line-height value will be expected to be relative to given font size
-    //      i.e. 1.75 given, == 28 relative to 16
-    //  if off, an absolute value will be expected for line-height
-    //      i.e. 28 for 16, or whatever ratio may be preferred
-    //  non-valid values will default to on, with a warning
-    //  value set here doesn't affect keyword values (normal, inherit, etc)
 
     sans-serif: (
         stack:              "'Open Sans', 'Helvetica Neue', Helvetica, sans-serif",
@@ -118,25 +109,17 @@ $type-config: (
         ),
     ),
 
-    inherit: (
-        stack:              inherit,
-
+    scale: (
         base: (
-            font-size:      inherit,
-            font-weight:    inherit,
-            line-height:    inherit,
+            font-size:      initial,
         ),
 
         larger: (
             font-size:      18,
-            font-weight:    inherit,
-            line-height:    1.611,
         ),
 
         smaller: (
             font-size:      12,
-            font-weight:    inherit,
-            line-height:    1.583,
         ),
     ),
 

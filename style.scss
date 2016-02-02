@@ -126,7 +126,7 @@ $palettes: (
 //  Project Variables
 //
 
-$foo:                       bar;
+$foo:                       "bar";
 
 
 
@@ -158,7 +158,7 @@ $foo:                       bar;
             
             @if $offset == offset {
                 transform:              translateY(-$low-height);
-            }
+            } @else { }
         }
         
         @else if $height == high {
@@ -167,7 +167,11 @@ $foo:                       bar;
             
             @if $offset == offset {
                 transform:              translateY(-$high-height);
-            }
+            } @else { }
+        }
+        
+        @else if $height == none {
+            box-shadow:             none !important;
         }
         
         @else {
@@ -184,7 +188,7 @@ $foo:                       bar;
 
             @if $offset == offset {
                 transform:              translateY(-$low-height);
-            }
+            } @else { }
         }
 
         @else if $height == high {
@@ -193,7 +197,11 @@ $foo:                       bar;
 
             @if $offset == offset {
                 transform:              translateY(-$high-height);
-            }
+            } @else { }
+        }
+        
+        @else if $height == none {
+            filter:                 drop-shadow(0 0 0 transparent);
         }
 
         @else {
@@ -210,7 +218,7 @@ $foo:                       bar;
 
             @if $offset == offset {
                 transform:              translateY(-$low-height);
-            }
+            } @else { }
         }
 
         @else if $height == high {
@@ -219,7 +227,11 @@ $foo:                       bar;
 
             @if $offset == offset {
                 transform:              translateY(-$high-height);
-            }
+            } @else { }
+        }
+        
+        @else if $height == none {
+            text-shadow:            none !important;
         }
 
         @else {
@@ -235,7 +247,6 @@ $foo:                       bar;
         text-shadow:        none;
     }
     
-
     @else {
         @include debugger(visible, "‘@include material-shadow(),’ at $type");
     }
