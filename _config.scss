@@ -134,12 +134,11 @@ $grid-config: (
     
     columns:                12,
     
-    //  valid values are: on, off
-    keyword-columns:        off,
+    keyword-columns:        false,
+    //  valid values are boolean
     //  keyword columns add breakpoint keywords to the grid output
     //  keyword column styles are restricted to their breakpoint set
     //  i.e. col-12@small will have no affect at medium or large widths
-    //  non-valid values will default to off
 
     gutter:                 2.4rem,
 
@@ -147,11 +146,8 @@ $grid-config: (
         small:              640px,
         large:              1024px,
     ),
-
+    
     master-width: (
-        //  @TODO:
-        //  if on-small is set to 100%, row--padded elements will cause
-        //  horizontal scrolling. fix it.
         on-small:           85%,
         on-medium:          80%,
         on-large:           80%,
