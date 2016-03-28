@@ -169,16 +169,15 @@ $utilities-config: (
     ),
 
     //  recurring classes
-    rotation-grades: (
-        //  values added here will output rotation modifying classes
-        //  e.g. .rotate-45, .rotate-180, .rotate-420, etc
-        1:                  45,
-        2:                  90,
-        3:                  180,
-        4:                  270,
-        5:                  360,
-    ),
-    type-scales-to:         12,
+    rotation-grades:        45
+                            90
+                            180
+                            270
+                            360,
+    //  values added here will output rotation modifying classes
+    //  e.g. .rotate-45, .rotate-180, .rotate-420, etc
+    
+    type-scales-by:         12,
 
     //  easter eggs
     emoticon-prefixes:      ".e, .ascii",
