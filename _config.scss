@@ -15,7 +15,7 @@ $debug-config: (
     //  non-valid values will default to on
     
     switches: (
-        breakpoints:        on,
+        breakpoints:        true,
         mixins:             visible,
     ),
     
