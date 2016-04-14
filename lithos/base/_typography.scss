@@ -179,9 +179,9 @@ abbr[title] {
 
 mark, .mark,
 ins, .ins {
-	background:				palette(type, highlight);
+	background:				palette(foreground, highlight);
 
-	color:					palette(foreground);
+	color:					currentColor;
 }
 
 ::selection {

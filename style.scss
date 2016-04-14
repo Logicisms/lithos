@@ -57,6 +57,10 @@ $palettes: (
         
         transparent:        rgba($black, $transparent-opacity),
         translucent:        rgba($black, $translucent-opacity),
+
+        highlight:          hsl(50, 100%, 85%),
+        // #b4d5ff is the OS X highlight color,
+        // in case that happens to be relevant
     ),
     
     
@@ -103,13 +107,6 @@ $palettes: (
         success:            material-color(green),
         warning:            material-color(yellow),
         alert:              material-color(red),
-    ),
-    
-    type: (
-        base:               $black,
-        highlight:          hsl(50, 100%, 85%),
-        // #b4d5ff is the OS X highlight color,
-        // in case that happens to be relevant
     ),
 );
 
