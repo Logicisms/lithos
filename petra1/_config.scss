@@ -1,0 +1,239 @@
+//  by @Logicisms
+
+//
+//  Petra Configuration
+//
+
+//  debugging configuration
+
+$debug-config: (
+    
+    //  valid values are: visible, on, off
+    //  visible will produce a warning and a red outline on the affected element
+    //  on will throw an error and prevent compilation
+    //  off will deactivate debugging
+    //  non-valid values will default to on
+    
+    switches: (
+        breakpoints:        true,
+        mixins:             visual,
+    ),
+    
+);
+
+
+//  structure configuration
+
+$structure-config: (
+    
+    z-index: (
+        default:            1,
+        below:              -1,
+        beneath:            -1,
+        under:              -1,
+
+        header:             4,
+        modal:              2048,
+    ),
+
+    namespace-delimiters: (
+        element:            "__",
+        modifier:           "--",
+        responsive:         \@,
+    ),
+    
+);
+
+
+
+//  base typographic variables
+
+$type-config: (
+
+    browser-context:        16px,
+
+    path:                   "../petra/fonts",
+
+    sans-serif: (
+        stack:              "'Open Sans', 'Helvetica Neue', Helvetica, sans-serif",
+
+        base: (
+            font-size:      16,
+            font-weight:    400,
+            line-height:    1.75, // equivalent to 2.8rem
+        ),
+
+        larger: (
+            font-size:      18,
+            font-weight:    400,
+            line-height:    1.611,
+        ),
+
+        smaller: (
+            font-size:      12,
+            font-weight:    400,
+            line-height:    1.583,
+        ),
+    ),
+
+    serif: (
+        //  applied to .lexicon class dictionary elements in the black box
+        stack:              "'Times New Roman', Times, Georgia, serif",
+
+        base: (
+            font-size:      16,
+            font-weight:    normal,
+            line-height:    1.75,
+        ),
+    ),
+
+    monospace-1: (
+        //  applied to code, kbd, tt, and var elements in the black box
+        stack:              "Monaco, Consolas, 'Andale Mono', monospace",
+
+        base: (
+            font-size:      16,
+            font-weight:    normal,
+            line-height:    inherit,
+        ),
+    ),
+
+    monospace-2: (
+        //  applied to pre elements in the black box
+        stack:              "'Courier New', Courier, monospace",
+
+        base: (
+            font-size:      16,
+            font-weight:    normal,
+            line-height:    inherit,
+        ),
+    ),
+
+    scale: (
+        base: (
+            font-size:      initial,
+        ),
+
+        larger: (
+            font-size:      18,
+            line-height:    1.611,
+        ),
+
+        smaller: (
+            font-size:      12,
+            line-height:    1.583,
+        ),
+    ),
+
+);
+
+
+//  grid configuration
+
+$grid-config: (
+    
+    columns:                12,
+    
+    keyword-columns:        false,
+    //  valid values are boolean
+    //  keyword columns add breakpoint keywords to the grid output
+    //  keyword column styles are restricted to their breakpoint set
+    //  i.e. col-12@small will have no affect at medium or large widths
+
+    gutter:                 2.4rem,
+
+    breakpoints: (
+        small:              640px,
+        large:              1024px,
+    ),
+    
+    master-width: (
+        on-small:           85%,
+        on-medium:          80%,
+        on-large:           80%,
+
+        fixed:              102.4rem,
+    ),
+    
+);
+
+
+//  utility configuration
+
+$utilities-config: (
+    
+    //  mixins
+    transitions: (
+        default-time:       0.24s,
+        default-ease:       ease-in-out,
+    ),
+
+    //  recurring classes
+    rotation-grades:        45
+                            90
+                            180
+                            270
+                            360,
+    //  values added here will output rotation modifying classes
+    //  e.g. .rotate-45, .rotate-180, .rotate-420, etc
+    
+    type-scales-by:         12,
+
+    //  easter eggs
+    emoticon-prefixes:      ".e, .ascii",
+    
+);
+
+
+
+
+
+
+//
+//  Petra Fragment Imports
+//
+
+@import
+    "../petra/black-box/utilities/functions",
+    "../petra/black-box/utilities/variables",
+    "../petra/black-box/utilities/debugging",
+    "../petra/black-box/utilities/breakpoints",
+    "../petra/black-box/utilities/mixins",
+    "../petra/black-box/utilities/animation"
+;
+
+@import
+    "../petra/black-box/base/reset",
+    "../petra/black-box/base/root",
+    "../petra/black-box/base/accessibility",
+    "../petra/black-box/base/typography"
+;
+
+@import
+    "../petra/black-box/content/icons",
+    "../petra/black-box/content/grouping",
+    "../petra/black-box/content/recurring",
+    "../petra/black-box/content/media"
+;
+
+@import
+    "../petra/black-box/basket/eastereggs"
+;
+
+@import
+    "../petra/black-box/structure/sections",
+    "../petra/black-box/structure/containers",
+    "../petra/black-box/structure/grid"
+;
+
+@import
+    "../petra/black-box/components/navigation",
+    "../petra/black-box/components/forms",
+    "../petra/black-box/components/tables"
+;
+
+
+
+
+
+

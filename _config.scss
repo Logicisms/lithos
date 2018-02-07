@@ -1,239 +1,245 @@
-//  by @Logicisms
-
 //
-//  Petra Configuration
+//  Project config
 //
 
-//  debugging configuration
-
-$debug-config: (
-    
-    //  valid values are: visible, on, off
-    //  visible will produce a warning and a red outline on the affected element
-    //  on will throw an error and prevent compilation
-    //  off will deactivate debugging
-    //  non-valid values will default to on
-    
-    switches: (
-        breakpoints:        true,
-        mixins:             visual,
+$settings: (
+    typography: (
+        browser-context:        16px,
+        
+        font-sizes: (
+            //  "static" sizes, should be in 'rem'.
+            normal:                 1.6rem,
+            
+            //  "responsive" sizes, should be in '%' or 'em'.
+            smaller:                85%,
+            larger:                 115%,
+        ),
+        font-faces: (
+            open-sans: (
+                font-family:            "Open Sans",
+                src: (
+                    url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+                    url("/fonts/OpenSans-Regular-webfont.woff") format("woff")
+                ),
+            ),
+        ),
+        font-stacks: (
+            sans-serif:             ("Helvetica Neue", Helvetica, sans-serif),
+            serif:                  ("Times New Roman", Times, serif),
+            monospace:              ("Lucida Console", Monaco, monospace),
+        ),
+        
+        font-family:            sans-serif,
+        line-height:            1.75,
+        
+        //  determines the value (in ems) by which headings h1-h6 are scaled
+        //  relative to font-size.
+        heading-scale-ratio:    0.25em,
     ),
     
+    layout: (
+        //  if 'type-based-grid' is true, this gutter will be ignored.
+        gutter:                 1.75em,
+        
+        grid-columns:           12,
+        
+        breakpoints: (
+            small: (
+                max-width:          64rem,
+            ),
+            medium: (
+                min-width:          64.1rem,
+            ),
+            large: (
+                min-width:          102.4rem,
+            ),
+            retina: (
+                min-device-pixel-ratio: 2,
+                min-resolution:     192dpi,
+            ),
+        ),
+        class-breakpoints:      3,
+        
+        z-indices: (
+            default:                1,
+        ),
+    ),
+    
+    objects: (
+        list-style-types: (
+            circle, disclosure-closed, disclosure-open, decimal, decimal-leading-zero,
+            disc, lower-alpha, lower-roman, square, upper-alpha, upper-roman,
+        ),
+    ),
+    
+    utilities: (
+        //  Transform
+        rotation-grades: (
+            45, 90, 180, 270, 360,
+        ),
+        
+        //  Typography
+        font-scale-start:       1,
+        font-scale-end:         10,
+    ),
+    
+    single-property-utilities: (
+        //  Display
+        display: (
+            namespace:              'display',
+            values: (
+                block, flex, flow, flow-root, grid,
+                inline, inline-block, inline-flex, inline-grid, inline-table,
+                list-item, run-in, subgrid, table,
+            ),
+        ),
+        
+        //  Interaction
+        cursor: (
+            namespace:              'cursor',
+            values: (
+                alias, all-scroll, copy, crosshair, default,
+                grab, grabbing, help, move, not-allowed,
+                none, pointer, progress, text, wait,
+                zoom-in, zoom-out,
+            ),
+        ),
+        pointer-events: (
+            namespace:              'pointer-events',
+            values: (
+                auto, initial, none,
+            ),
+        ),
+        
+        //  Layout
+        position: (
+            namespace:              'position',
+            values: (
+                absolute, fixed, relative, static,
+            ),
+        ),
+        float: (
+            namespace:              'float',
+            values: (
+                left, right, none,
+            ),
+        ),
+        
+        flex-direction: (
+            namespace:              'flex-direction',
+            values: (
+                column, row,
+            ),
+        ),
+        align-content: (
+            namespace:              'flex-align',
+            values: (
+                center, flex-start, flex-end, space-around, space-between, stretch,
+            ),
+        ),
+        justify-content: (
+            namespace:              'flex-justify',
+            values: (
+                center, flex-start, flex-end, space-around, space-between,
+            ),
+        ),
+        align-self: (
+            namespace:              'flex-align-self',
+            values: (
+                center, flex-start, flex-end, space-around, space-between, stretch,
+            ),
+        ),
+        
+        //  Typography
+        font-weight: (
+            namespace:              'font-weight',
+            values: (
+                normal, bold, bolder, lighter,
+            ),
+        ),
+        text-align: (
+            namespace:             'text-align',
+            values: (
+                left, right, center, justify,
+            ),
+        ),
+        text-transform: (
+            namespace:              'text-transform',
+            values: (
+                capitalize, lowercase, uppercase,
+            ),
+        ),
+        white-space: (
+            namespace:              'white-space',
+            values: (
+                normal, pre, pre-line, pre-wrap,
+            ),
+        ),
+        vertical-align: (
+            namespace:              'vertical-align',
+            values: (
+                baseline, bottom, middle, sub, super,
+                text-top, text-bottom, top,
+            ),
+        ),
+    ),
+    
+    features: (
+        //  Debugging
+        //  'true' to outline affected elements when a mixin is passed invalid arguments.
+        visual-debugging:       true,
+
+        //  'true' to apply color-coded outlines to namespaced entities.
+        health-check:           false,
+
+        //  'true' to @debug print a count of namespaced scopes on compile.
+        scope-index:            false,
+        
+        //  Namespacing
+        //  'true' to nest BEM elements to their parent blocks.
+        nested-bem:             true,
+        
+        //  'true' to nest BEM blocks with themselves to ensure consistent specificity.
+        strict-nesting:         false,
+        
+        //  'true' to output BEM modifiers as delimiter-prefixed short classes.
+        detached-bem-syntax:    false,
+        
+        //  Layout
+        //  'true' to base project gutter and vertical spacing on line-height.
+        type-based-grid:        true,
+        
+        //  Generic
+        //  'true' to output CSS reset.
+        reset-css:              true,
+        
+        //  'true' to reset :focus styles. WARNING: if 'true', implement custom styles to ensure accessibility.
+        reset-focus:            false,
+        
+        //   'true' to remove all user agent button styles, rendering them as plain text.
+        hard-reset-buttons:     true,
+        
+        //  Objects
+        //  'true' to output a configurable grid system.
+        grid-system:            true,
+        
+        //  'true' to use flexbox rules instead of floats in grid system.
+        flexbox-grid:           true,
+        
+        //  'true' to build grid system with media queries as defined in config.
+        responsive-grid:        true,
+        
+        //  Overrides
+        //  'true' will output utility class values as '!important'.
+        important-utilities:    true,
+        
+        //  'true' to output width-affecting 'span' utilities that correspond with the grid.
+        grid-span-utilities:    true,
+        
+        //  'true' to output a stylesheet for printed media, based on the HTML5 boilerplate.
+        print-media:            true,
+    ),
 );
 
-
-//  structure configuration
-
-$structure-config: (
-    
-    z-index: (
-        default:            1,
-        below:              -1,
-        beneath:            -1,
-        under:              -1,
-
-        header:             4,
-        modal:              2048,
-    ),
-
-    namespace-delimiters: (
-        element:            "__",
-        modifier:           "--",
-        responsive:         \@,
-    ),
-    
-);
-
-
-
-//  base typographic variables
-
-$type-config: (
-
-    browser-context:        16px,
-
-    path:                   "../petra/fonts",
-
-    sans-serif: (
-        stack:              "'Open Sans', 'Helvetica Neue', Helvetica, sans-serif",
-
-        base: (
-            font-size:      16,
-            font-weight:    400,
-            line-height:    1.75, // equivalent to 2.8rem
-        ),
-
-        larger: (
-            font-size:      18,
-            font-weight:    400,
-            line-height:    1.611,
-        ),
-
-        smaller: (
-            font-size:      12,
-            font-weight:    400,
-            line-height:    1.583,
-        ),
-    ),
-
-    serif: (
-        //  applied to .lexicon class dictionary elements in the black box
-        stack:              "'Times New Roman', Times, Georgia, serif",
-
-        base: (
-            font-size:      16,
-            font-weight:    normal,
-            line-height:    1.75,
-        ),
-    ),
-
-    monospace-1: (
-        //  applied to code, kbd, tt, and var elements in the black box
-        stack:              "Monaco, Consolas, 'Andale Mono', monospace",
-
-        base: (
-            font-size:      16,
-            font-weight:    normal,
-            line-height:    inherit,
-        ),
-    ),
-
-    monospace-2: (
-        //  applied to pre elements in the black box
-        stack:              "'Courier New', Courier, monospace",
-
-        base: (
-            font-size:      16,
-            font-weight:    normal,
-            line-height:    inherit,
-        ),
-    ),
-
-    scale: (
-        base: (
-            font-size:      initial,
-        ),
-
-        larger: (
-            font-size:      18,
-            line-height:    1.611,
-        ),
-
-        smaller: (
-            font-size:      12,
-            line-height:    1.583,
-        ),
-    ),
-
-);
-
-
-//  grid configuration
-
-$grid-config: (
-    
-    columns:                12,
-    
-    keyword-columns:        false,
-    //  valid values are boolean
-    //  keyword columns add breakpoint keywords to the grid output
-    //  keyword column styles are restricted to their breakpoint set
-    //  i.e. col-12@small will have no affect at medium or large widths
-
-    gutter:                 2.4rem,
-
-    breakpoints: (
-        small:              640px,
-        large:              1024px,
-    ),
-    
-    master-width: (
-        on-small:           85%,
-        on-medium:          80%,
-        on-large:           80%,
-
-        fixed:              102.4rem,
-    ),
-    
-);
-
-
-//  utility configuration
-
-$utilities-config: (
-    
-    //  mixins
-    transitions: (
-        default-time:       0.24s,
-        default-ease:       ease-in-out,
-    ),
-
-    //  recurring classes
-    rotation-grades:        45
-                            90
-                            180
-                            270
-                            360,
-    //  values added here will output rotation modifying classes
-    //  e.g. .rotate-45, .rotate-180, .rotate-420, etc
-    
-    type-scales-by:         12,
-
-    //  easter eggs
-    emoticon-prefixes:      ".e, .ascii",
-    
-);
-
-
-
-
-
-
-//
-//  Petra Fragment Imports
-//
-
 @import
-    "../petra/black-box/utilities/functions",
-    "../petra/black-box/utilities/variables",
-    "../petra/black-box/utilities/debugging",
-    "../petra/black-box/utilities/breakpoints",
-    "../petra/black-box/utilities/mixins",
-    "../petra/black-box/utilities/animation"
-;
-
-@import
-    "../petra/black-box/base/reset",
-    "../petra/black-box/base/root",
-    "../petra/black-box/base/accessibility",
-    "../petra/black-box/base/typography"
-;
-
-@import
-    "../petra/black-box/content/icons",
-    "../petra/black-box/content/grouping",
-    "../petra/black-box/content/recurring",
-    "../petra/black-box/content/media"
-;
-
-@import
-    "../petra/black-box/basket/eastereggs"
-;
-
-@import
-    "../petra/black-box/structure/sections",
-    "../petra/black-box/structure/containers",
-    "../petra/black-box/structure/grid"
-;
-
-@import
-    "../petra/black-box/components/navigation",
-    "../petra/black-box/components/forms",
-    "../petra/black-box/components/tables"
-;
-
-
-
-
-
-
+    "../petra/petra";

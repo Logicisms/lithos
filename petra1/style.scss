@@ -1,0 +1,324 @@
+@charset 'utf-8';
+
+//
+//  use the rem unit as the principle unit of measurement (1rem = 10px, by default);
+//  the 1rem/10px default is established in petra, based on the user's browser font-size;
+//  using the rem unit ensures scaling consistency if/when the user adjusts their settings;
+//
+
+
+
+
+
+
+//
+//  Imports
+//
+
+@import                     url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+//@import                     url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
+//@import                     url(https://fonts.googleapis.com/css?family=Indie+Flower);
+
+@import                     "config";
+
+
+
+
+
+
+//
+//  Color Schema
+//
+
+$primary:                   material-color(blue-grey);
+$secondary:                 material-color(deep-purple);
+$tertiary:                  material-color(light-blue);
+
+$transparent-opacity:       0.24;
+$translucent-opacity:       0.6;
+
+
+$palettes: (
+    background: (
+        //  background color, theme base
+        base:               $white,
+        dark:               shade($white, 12%),
+        light:              tint($white, 100%),
+        
+        transparent:        rgba($white, $transparent-opacity),
+        translucent:        rgba($white, $translucent-opacity),
+    ),
+    
+    foreground: (
+        //  background opposite, type base
+        base:               $black,
+        dark:               shade($black, 100%),
+        light:              tint($black, 24%),
+        
+        transparent:        rgba($black, $transparent-opacity),
+        translucent:        rgba($black, $translucent-opacity),
+
+        highlight:          hsl(50, 100%, 85%),
+        // #b4d5ff is the OS X highlight color,
+        // in case that happens to be relevant
+    ),
+    
+    
+    primary: (
+        //  primary material color
+        base:               $primary,
+        dark:               shade($primary, 24%),
+        light:              tint($primary, 24%),
+        
+        transparent:        rgba($primary, $transparent-opacity),
+        translucent:        rgba($primary, $translucent-opacity),
+    ),
+    
+    secondary: (
+        //  secondary material color, offset
+        base:               $secondary,
+        dark:               shade($secondary, 24%),
+        light:              tint($secondary, 24%),
+        
+        transparent:        rgba($secondary, $transparent-opacity),
+        translucent:        rgba($secondary, $translucent-opacity),
+    ),
+    
+    action: (
+        //  action material color, call to action
+        base:               $tertiary,
+        dark:               shade($tertiary, 24%),
+        light:              tint($tertiary, 24%),
+        
+        transparent:        rgba($tertiary, $transparent-opacity),
+        translucent:        rgba($tertiary, $translucent-opacity),
+        
+        visited:            $tertiary,
+        focus:              tint($tertiary, 48%),
+        active:             shade($tertiary, 24%),
+        disabled:           desaturate($tertiary, 100%),
+        
+        print:              desaturate($tertiary, 100%),
+    ),
+    
+    
+    label: (
+        base:               hsl(231, 100%, 77%),
+        success:            material-color(green),
+        warning:            material-color(yellow),
+        alert:              material-color(red),
+    ),
+);
+
+@function palette($palette, $tone: base) {
+    @return map-deep-get($palettes, $palette, $tone);
+}
+
+
+
+
+
+
+//
+//  Project Variables
+//
+
+$foo:                       "bar";
+
+
+
+
+
+
+//
+//  Project Mixins
+//
+
+//  material design components
+
+@mixin material-shadow($type, $height: low, $offset: null) {
+
+    $low-height:                0.2rem;
+    $low-blur:                  0.2rem;
+    $low-color:                 rgba(palette(foreground), 0.48);
+
+    $high-height:               0.8rem;
+    $high-blur:                 0.6rem;
+    $high-color:                rgba(palette(foreground), 0.36);
+
+    
+    @if $type == box {
+        
+        @if $height == low {
+            box-shadow:             0 $low-height $low-blur $low-color;
+            
+            
+            @if $offset == offset {
+                transform:              translateY(-$low-height);
+            } @else { }
+        }
+        
+        @else if $height == high {
+            box-shadow:             0 $high-height $high-blur $high-color;
+            
+            
+            @if $offset == offset {
+                transform:              translateY(-$high-height);
+            } @else { }
+        }
+        
+        @else if $height == none {
+            box-shadow:             none !important;
+        }
+        
+        @else {
+            @include debugger(visible, "‘@include material-shadow(),’ at $height");
+        }
+        
+    }
+
+    @else if $type == filter {
+        
+        @if $height == low {
+            filter:                 drop-shadow(0 $low-height $low-blur $low-color);
+
+
+            @if $offset == offset {
+                transform:              translateY(-$low-height);
+            } @else { }
+        }
+
+        @else if $height == high {
+            filter:                 drop-shadow(0 $high-height $high-blur $high-color);
+
+
+            @if $offset == offset {
+                transform:              translateY(-$high-height);
+            } @else { }
+        }
+        
+        @else if $height == none {
+            filter:                 drop-shadow(0 0 0 transparent);
+        }
+
+        @else {
+            @include debugger(visible, "‘@include material-shadow(),’ at $height");
+        }
+        
+    }
+
+    @else if $type == text {
+        
+        @if $height == low {
+            text-shadow:            0 $low-height $low-blur $low-color;
+
+
+            @if $offset == offset {
+                transform:              translateY(-$low-height);
+            } @else { }
+        }
+
+        @else if $height == high {
+            text-shadow:            0 $high-height $high-blur $high-color;
+
+
+            @if $offset == offset {
+                transform:              translateY(-$high-height);
+            } @else { }
+        }
+        
+        @else if $height == none {
+            text-shadow:            none !important;
+        }
+
+        @else {
+            @include debugger(visible, "‘@include material-shadow(),’ at $height");
+        }
+        
+    }
+
+    @else if $type == none {
+        box-shadow:         none;
+        filter:             none;
+
+        text-shadow:        none;
+    }
+    
+    @else {
+        @include debugger(visible, "‘@include material-shadow(),’ at $type");
+    }
+
+}
+
+
+
+
+
+
+//
+//  Root Elements
+//
+
+body {
+    background:             palette(background);
+
+    color:                  palette(foreground);
+    
+    @include                font-set(sans-serif);
+}
+
+
+
+
+
+
+//
+//  Lithos Fragment Imports
+//
+
+@import
+    "lithos/base/accessibility",
+    "lithos/base/typography";
+
+@import	
+    "lithos/content/icons",
+    "lithos/content/grouping",
+    "lithos/content/recurring",
+    "lithos/content/media";
+
+@import
+    "lithos/basket/eggs";
+
+@import
+    "lithos/structure/sections",
+    "lithos/structure/containers";
+
+@import
+    "lithos/components/navigation",
+    "lithos/components/forms",
+    "lithos/components/modals",
+    "lithos/components/tables";
+
+@import
+    "lithos/cms/bolt";
+
+
+
+
+
+
+//
+//  Quarantine Import
+//
+
+//  poorly scoped css, quick fixes, and hacks go into quarantine
+//  in quarantine they remain until properly fit into the project's scope
+//  quarantine should remain at the bottom of the project
+@import
+    "lithos/quarantine/quarantine";
+
+
+
+
+
+
