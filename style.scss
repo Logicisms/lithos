@@ -10,7 +10,7 @@
     @include filmreel(31, 2.5s);
     
     background: {
-        image:              url('../tmp/midir.jpg'); }
+        image:              url('../assets/img/midir.jpg'); }
     
     @include responsive-modifier(small) {
         color: purple;
