@@ -1,11 +1,34 @@
-@import "config";
+//
+//  Module @imports
+//
+
+//@import "config";
+@import
+    "../petra/00-resources",
+    "../petra/01-settings",
+    
+    "01-settings/config",
+    
+    "../petra/02-tools",
+    
+    "02-tools/namespacing-api",
+    
+    "../petra/03-generic",
+    "../petra/04-elements",
+    "../petra/05-objects",
+    
+    "05-objects/grouping.lists",
+    
+//    "06-components/...",
+    
+    "../petra/07-overrides";
 
 
 //
 //  Test Styles
 //
 
-@include _prefix(component, 'filmreel') {
+@include component('filmreel') {
     @include aspect-ratio(540, 200);
     @include filmreel(31, 2.5s);
     

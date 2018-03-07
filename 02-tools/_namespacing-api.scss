@@ -1,0 +1,31 @@
+//
+//  Tools, Namespacing API
+//
+
+@mixin object($name...) {
+    @include _prefix(object, $name...) { @content; }
+}
+@mixin component($name...) {
+    @include _prefix(component, $name...) { @content; }
+}
+@mixin utility($name...) {
+    @include _prefix(utility, $name...) { @content; }
+}
+@mixin scope($name...) {
+    @include _prefix(scope, $name...) { @content; }
+}
+
+@mixin state($name...) {
+    @include _prefix(state, $name...) { @content; }
+}
+@mixin state-within($name...) {
+    @include _prefix(state-within, $name...) { @content; }
+}
+
+@mixin hack($name...) {
+    @include _prefix(hack, $name...) { @content; }
+}
+@mixin javascript($name...) {
+    @include _prefix(javascript, $name...) { @content; }
+}
+
