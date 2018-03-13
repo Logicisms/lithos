@@ -2,25 +2,31 @@
 //  Module @imports
 //
 
-//@import "config";
-@import
-    "../petra/00-resources",
+@import // layer 01, settings
     "../petra/01-settings",
     
-    "01-settings/config",
-    
+    "01-settings/config";
+
+@import // layer 02, tools
     "../petra/02-tools",
     
-    "02-tools/namespacing-api",
-    
-    "../petra/03-generic",
-    "../petra/04-elements",
+    "02-tools/namespacing-api";
+
+@import // layer 03, generic
+    "../petra/03-generic";
+
+@import // layer 04, elements
+    "../petra/04-elements";
+
+@import // layer 05, objects
     "../petra/05-objects",
     
-    "05-objects/grouping.lists",
-    
-//    "06-components/...",
-    
+    "05-objects/grouping.lists";
+
+//@import // layer 06, components
+//    "06-components/...";
+
+@import // layer 06, overrides
     "../petra/07-overrides";
 
 
@@ -33,7 +39,7 @@
     @include filmreel(31, 2.5s);
     
     background: {
-        image:              url('../assets/img/midir.jpg'); }
+        image:              url("../assets/img/midir.jpg"); }
     
     @include responsive-modifier(small) {
         color: purple;
