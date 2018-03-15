@@ -24,8 +24,10 @@
     
     "05-objects/grouping.lists";
 
-//@import // layer 06, components
-//    "06-components/...";
+@import // layer 06, components
+    "06-components/site-header",
+    "06-components/site-body",
+    "06-components/site-footer";
 
 @import // layer 06, overrides
     "../petra/07-overrides";
@@ -48,4 +50,3 @@
 }
 
 @include scope-index;
-

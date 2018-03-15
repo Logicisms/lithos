@@ -85,6 +85,13 @@ $settings: (
         ),
     ),
     
+    objects: (
+        list-style-types: (
+            circle, decimal, decimal-leading-zero, disc, lower-alpha,
+            lower-roman, square, upper-alpha, upper-roman, 
+        ),
+    ),
+    
     utilities: (
         //  Transform
         rotation-grades: (
