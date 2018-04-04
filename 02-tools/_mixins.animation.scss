@@ -1,0 +1,13 @@
+//
+//  Animations and transitions
+//
+
+@mixin transition($properties, $duration: 0.25s, $timing-function: ease-in-out, $delay: 0) {
+	transition: {
+        delay:              $delay;
+        duration:           $duration;
+        property:           $properties;
+        timing-function:    $timing-function; }
+}
+
+
