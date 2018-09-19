@@ -1,52 +1,28 @@
+@charset "utf-8";
+
 //
 //  Module @imports
 //
 
-@import // layer 01, settings
-    "../petra/01-settings",
-    
-    "01-settings/config";
+@import
+    'petra/00-resources';
 
-@import // layer 02, tools
-    "../petra/02-tools",
-    
-    "02-tools/mixins.context-api",
-    "02-tools/mixins.namespacing-api";
+@import
+    'petra/01-settings',
 
-@import // layer 03, generic
-    "../petra/03-generic";
+    '01-settings/config.petra';
 
-@import // layer 04, elements
-    "../petra/04-elements";
+@import
+    'petra/02-tools';
 
-@import // layer 05, objects
-    "../petra/05-objects",
-    
-    "05-objects/grouping.lists";
+@import
+    'petra/03-generic';
 
-@import // layer 06, components
-    "06-components/site-header",
-    "06-components/site-body",
-    "06-components/site-footer";
+@import
+    'petra/04-elements';
 
-@import // layer 06, overrides
-    "../petra/07-overrides";
+@import
+    'petra/05-objects';
 
-
-//
-//  Test Styles
-//
-
-@include component('filmreel') {
-    @include aspect-ratio(540, 200);
-    @include filmreel(31, 2.5s);
-    
-    background: {
-        image:              url("../assets/img/midir.jpg"); }
-    
-    @include responsive-modifier(small) {
-        color: purple;
-    }
-}
-
-@include scope-index;
+@import
+    'petra/07-overrides';

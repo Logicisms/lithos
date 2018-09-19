@@ -1,0 +1,23 @@
+//
+//  #SETTINGS, #CONFIG-PETRA
+//
+
+@import
+    'petra.ascii',
+    'petra.debugging',
+    'petra.features',
+    'petra.layout',
+    'petra.namespacing',
+    'petra.typography',
+    'petra.utilities';
+
+$_petra: config-make(
+    'id',
+    $petra-config-ascii,
+    $petra-config-debugging,
+    $petra-config-features,
+    $petra-config-layout,
+    $petra-config-namespacing,
+    $petra-config-typography,
+    $petra-config-utilities
+);
