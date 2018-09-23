@@ -1,0 +1,7 @@
+//
+//  #TOOLS, #PETRA-FUNCTIONS
+//
+
+@function petra($path...) {
+    @return _petra($path...);
+}

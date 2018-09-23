@@ -1,6 +1,9 @@
 //
-//  Namespacing API
+//  #TOOLS, #PETRA-MIXINS-NAMESPACING
 //
+
+//  Prefixes
+//  ============================================================================
 
 @mixin object($name...) {
     @include _prefix(object, $name...) { @content; }
@@ -29,3 +32,6 @@
     @include _prefix(javascript, $name...) { @content; }
 }
 
+
+//  Delimiters
+//  ============================================================================

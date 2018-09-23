@@ -10,10 +10,13 @@
 @import
     'petra/01-settings',
 
-    '01-settings/config.petra';
+    '01-settings/petra.config';
 
 @import
-    'petra/02-tools';
+    'petra/02-tools',
+
+    '02-tools/petra.config.functions',
+    '02-tools/petra.mixins.namespacing';
 
 @import
     'petra/03-generic';
@@ -22,7 +25,9 @@
     'petra/04-elements';
 
 @import
-    'petra/05-objects';
+    'petra/05-objects',
+
+    '05-objects/ui.ascii-icons';
 
 @import
     'petra/07-overrides';
