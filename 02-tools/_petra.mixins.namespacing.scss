@@ -35,3 +35,15 @@
 
 //  Delimiters
 //  ============================================================================
+
+@mixin element($classes...) {
+    @include _element($classes...) { @content; }
+}
+
+@mixin modifier($classes...) {
+    @include _modifier($classes...) { @content; }
+}
+
+@mixin responsive-modifier($breakpoints...) {
+    @include _responsive-modifier($breakpoints...) { @content; }
+}
