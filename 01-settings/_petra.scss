@@ -1,14 +1,14 @@
 //
-//  #SETTINGS, #CONFIG-PETRA
+//  #SETTINGS, #PETRA
 //
 
 @import
-    'petra.debugging',
-    'petra.features',
-    'petra.layout',
-    'petra.namespacing',
-    'petra.typography',
-    'petra.utilities';
+    'petra/debugging',
+    'petra/features',
+    'petra/layout',
+    'petra/namespacing',
+    'petra/typography',
+    'petra/utilities';
 
 $petra: config-make(
     'id',
